@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Packages | Isbah Arif</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0d0f12;
+      --bg-card: #12141c;
+      --primary: #ff6b00;
+      --accent-blue: #00d2ff;
+      --text-muted: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --glow: rgba(255, 107, 0, 0.25);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Glow Blobs */
+    .bg-glow {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.25;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .blob-1 { background: var(--primary); top: 5%; left: -5%; }
+    .blob-2 { background: var(--accent-blue); top: 50%; right: -5%; }
+
+    /* Fixed Header / Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(13, 15, 18, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: #a1a1aa;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent-blue);
+    }
+
+    .btn-nav {
+      background-color: var(--primary) !important;
+      color: #fff !important;
+      padding: 8px 18px !important;
+      border-radius: 30px !important;
+    }
+
+    /* Hero & Section Header */
+    .packages-hero {
+      text-align: center;
+      padding: 120px 20px 20px;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .badge-pill {
+      background: rgba(255, 107, 0, 0.15);
+      color: var(--primary);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .packages-hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .highlight-text {
+      background: linear-gradient(90deg, var(--primary), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Category Buttons Container - Guaranteed visibility on mobile & laptop */
+    .category-buttons {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 25px auto;
+      width: 100%;
+    }
+
+    .pkg-tab-btn {
+      background: #151821;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+
+    .pkg-tab-btn:hover {
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Active Tab Button State */
+    .pkg-tab-btn.active-tab {
+      background: linear-gradient(90deg, var(--primary), #ff8800) !important;
+      color: #ffffff !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 6px 20px var(--glow) !important;
+    }
+
+    /* Package Groups Grid */
+    .pkg-group {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 20px auto 80px;
+      padding: 0 5%;
+      box-sizing: border-box;
+      animation: tabFadeIn 0.4s ease-in-out;
+    }
+
+    .pkg-group.active-group {
+      display: grid !important;
+    }
+
+    /* Package Cards Styling */
+    .package-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 35px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 35px rgba(255, 107, 0, 0.2);
+    }
+
+    .package-card.vip {
+      border: 2px solid var(--primary);
+      background: linear-gradient(180deg, rgba(255, 107, 0, 0.08), var(--bg-card));
+    }
+
+    .vip-badge {
+      position: absolute;
+      top: -14px;
+      right: 25px;
+      background: linear-gradient(90deg, var(--primary), #ff8800);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 12px var(--glow);
+    }
+
+    .pkg-header h3 {
+      font-size: 24px;
+      color: #ffffff;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+    }
+
+    .pkg-header p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin: 0 0 20px 0;
+      line-height: 1.5;
+    }
+
+    .pkg-price {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent-blue);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .pkg-price span {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .pkg-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+    }
+
+    .pkg-features li {
+      color: #e4e4e7;
+      font-size: 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pkg-features li i {
+      color: #25d366;
+      font-size: 14px;
+    }
+
+    .pkg-btn {
+      width: 100%;
+      text-align: center;
+      padding: 13px 0;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-sizing: border-box;
+    }
+
+    .package-card.vip .pkg-btn,
+    .pkg-btn:hover {
+      background: linear-gradient(90deg, var(--primary), #ff8800);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 6px 20px var(--glow);
+    }
+
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MOBILE RESPONSIVE DESIGN */
+    @media screen and (max-width: 992px) {
+      .navbar {
+        flex-wrap: wrap;
+        padding: 12px 15px;
+      }
+      .nav-links {
+        gap: 15px;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+        padding-bottom: 6px;
+        justify-content: flex-start;
+      }
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+      .packages-hero {
+        padding-top: 130px;
+      }
+      .packages-hero h1 {
+        font-size: 30px;
+      }
+      
+      /* Mobile par teeno buttons ko wrap aur samne clearly adjust karne ke liye */
+      .category-buttons {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 6px !important;
+        padding: 0 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      .pkg-tab-btn {
+        flex: 1 1 auto !important;
+        width: auto !important;
+        padding: 8px 10px !important;
+        font-size: 10px !important;
+        border-radius: 20px !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+      }
+
+      .pkg-group {
+        grid-template-columns: 1fr !important;
+        padding: 0 15px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow blob-1"></div>
+  <div class="bg-glow blob-2"></div>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">ISBAH<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="packages.html" class="active">Packages</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#about">About & Skills</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="index.html#contact" class="btn-nav">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="packages-hero">
+    <span class="badge-pill"><i class="fas fa-tags"></i> Transparent Pricing</span>
+    <h1>My Service <span class="highlight-text">Packages</span></h1>
+    <p style="color: #9ca3af; font-size: 15px;">Select a category below to explore professional design, video, and marketing plans.</p>
+
+    <!-- 3 Category Tab Buttons -->
+    <div class="category-buttons">
+      <button class="pkg-tab-btn active-tab" onclick="switchCategory('graphic', this)">
+        <i class="fas fa-palette"></i> Graphic Design
+      </button>
+      <button class="pkg-tab-btn" onclick="switchCategory('video', this)">
+        <i class="fas fa-video"></i> Video Editing
+      </button>
+      <button class="pkg-tab-btn" onclick="switchCategory('marketing', this)">
+        <i class="fas fa-bullhorn"></i> Digital Marketing
+      </button>
+    </div>
+  </section>
+
+  <!-- 🎨 1. GRAPHIC DESIGN PLANS -->
+  <div id="graphic-plans" class="pkg-group active-group">
+    <div class="package-card">
+      <div class="pkg-header">
+        <h3>Basic Plan</h3>
+        <p>Essential graphics for social media presence.</p>
+        <div class="pkg-price">PKR 2,000</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 8 Social Media Posts</li>
+        <li><i class="fas fa-check-circle"></i> 1 Custom Design Concepts</li>
+        <li><i class="fas fa-check-circle"></i> Consistent Brand Styling</li>
+        <li><i class="fas fa-check-circle"></i> High-Quality JPG/PNG Files</li>
+        <li><i class="fas fa-check-circle"></i> 1 Revision (2 Days Delivery)</li>
+      </ul>
+      <a href="order.html?plan=Graphic Design - Basic" class="pkg-btn">Select Basic</a>
+    </div>
+
+    <div class="package-card">
+      <div class="pkg-header">
+        <h3>Standard Plan</h3>
+        <p>Comprehensive social media & platform management.</p>
+        <div class="pkg-price">PKR 5,500</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 15 Social Media Posts</li>
+        <li><i class="fas fa-check-circle"></i> 2 Custom Design Concepts</li>
+        <li><i class="fas fa-check-circle"></i> Consistent Brand Styling</li>
+        <li><i class="fas fa-check-circle"></i> High-Quality JPG/PNG Files</li>
+        <li><i class="fas fa-check-circle"></i> 1 Platform Handling</li>
+        <li><i class="fas fa-check-circle"></i> 2 Instagram/Facebook Stories</li>
+        <li><i class="fas fa-check-circle"></i> 1 Instagram/Facebook Reel</li>
+        <li><i class="fas fa-check-circle"></i> 2 Revisions (4 Days Delivery)</li>
+      </ul>
+      <a href="order.html?plan=Graphic Design - Standard" class="pkg-btn">Select Standard</a>
+    </div>
+
+    <div class="package-card vip">
+      <span class="vip-badge">VIP Choice</span>
+      <div class="pkg-header">
+        <h3>Premium Plan</h3>
+        <p>Full suite branding, scheduling & publishing.</p>
+        <div class="pkg-price">PKR 15,000</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 25 Social Media Posts</li>
+        <li><i class="fas fa-check-circle"></i> 3 Custom Design Concepts</li>
+        <li><i class="fas fa-check-circle"></i> Brand-Consistent Designs</li>
+        <li><i class="fas fa-check-circle"></i> 2 Platform Handling</li>
+        <li><i class="fas fa-check-circle"></i> 4 Stories (IG + FB) & 2 Reels</li>
+        <li><i class="fas fa-check-circle"></i> Captions & Hashtags Included</li>
+        <li><i class="fas fa-check-circle"></i> Posts Scheduling / Uploading</li>
+        <li><i class="fas fa-check-circle"></i> High-Resolution Files</li>
+        <li><i class="fas fa-check-circle"></i> 3 Revisions (6 Days Delivery)</li>
+      </ul>
+      <a href="order.html?plan=Graphic Design - Premium" class="pkg-btn">Select Premium</a>
+    </div>
+  </div>
+
+  <!-- 🎬 2. VIDEO EDITING PLANS -->
+  <div id="video-plans" class="pkg-group">
+    <div class="package-card">
+      <div class="pkg-header">
+        <h3>Basic Editing</h3>
+        <p>Clean and professional short video cut.</p>
+        <div class="pkg-price">PKR 1,500</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 1 Short Video (Up to 30 Sec)</li>
+        <li><i class="fas fa-check-circle"></i> Basic Cuts & Transitions</li>
+        <li><i class="fas fa-check-circle"></i> Music & Sound Effects</li>
+        <li><i class="fas fa-check-circle"></i> Basic Text Captions</li>
+        <li><i class="fas fa-check-circle"></i> 1 Revision (2 Days Delivery)</li>
+      </ul>
+      <a href="order.html?plan=Video Editing - Basic" class="pkg-btn">Select Basic</a>
+    </div>
+
+    <div class="package-card">
+      <div class="pkg-header">
+        <h3>Standard Plan</h3>
+        <p>Engaging multi-video content creation.</p>
+        <div class="pkg-price">PKR 5,000</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 3 Short Videos (Up to 60 Sec Each)</li>
+        <li><i class="fas fa-check-circle"></i> Smooth Transitions & Effects</li>
+        <li><i class="fas fa-check-circle"></i> Captions & Text Animations</li>
+        <li><i class="fas fa-check-circle"></i> Basic Color Correction & Audio Sync</li>
+        <li><i class="fas fa-check-circle"></i> 2 Revisions (4 Days Delivery)</li>
+      </ul>
+      <a href="order.html?plan=Video Editing - Standard" class="pkg-btn">Select Standard</a>
+    </div>
+
+    <div class="package-card vip">
+      <span class="vip-badge">VIP Choice</span>
+      <div class="pkg-header">
+        <h3>Premium Plan</h3>
+        <p>Advanced motion editing & professional grading.</p>
+        <div class="pkg-price">PKR 10,000</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 5 Short Videos (Up to 60 Sec Each)</li>
+        <li><i class="fas fa-check-circle"></i> Advanced Transitions & Effects</li>
+        <li><i class="fas fa-check-circle"></i> Animated Text & Dynamic Captions</li>
+        <li><i class="fas fa-check-circle"></i> Color Grading & Sound Design</li>
+        <li><i class="fas fa-check-circle"></i> Custom Branding & Intro/Outro</li>
+        <li><i class="fas fa-check-circle"></i> 3 Revisions (6 Days Delivery)</li>
+      </ul>
+      <a href="order.html?plan=Video Editing - Premium" class="pkg-btn">Select Premium</a>
+    </div>
+  </div>
+
+  <!-- 📢 3. DIGITAL MARKETING PLANS -->
+  <div id="marketing-plans" class="pkg-group">
+    <div class="package-card">
+      <div class="pkg-header">
+        <h3>Basic Plan</h3>
+        <p>Foundational profile setup & management.</p>
+        <div class="pkg-price">PKR 5,000</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 1 Social Media Platform</li>
+        <li><i class="fas fa-check-circle"></i> Profile / Page Optimization</li>
+        <li><i class="fas fa-check-circle"></i> 8 Posts Per Month</li>
+        <li><i class="fas fa-check-circle"></i> Basic Hashtag Research</li>
+        <li><i class="fas fa-check-circle"></i> Basic Content Calendar</li>
+        <li><i class="fas fa-check-circle"></i> Monthly Performance Summary</li>
+      </ul>
+      <a href="order.html?plan=Digital Marketing - Basic" class="pkg-btn">Select Basic</a>
+    </div>
+
+    <div class="package-card">
+      <div class="pkg-header">
+        <h3>Standard Plan</h3>
+        <p>Multi-platform growth & short-form reels.</p>
+        <div class="pkg-price">PKR 12,000</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 2 Social Media Platforms</li>
+        <li><i class="fas fa-check-circle"></i> 12 Posts Per Month</li>
+        <li><i class="fas fa-check-circle"></i> 4 Short Reels Per Month</li>
+        <li><i class="fas fa-check-circle"></i> Content Planning & Scheduling</li>
+        <li><i class="fas fa-check-circle"></i> Audience Engagement Support</li>
+        <li><i class="fas fa-check-circle"></i> Monthly Performance Report</li>
+      </ul>
+      <a href="order.html?plan=Digital Marketing - Standard" class="pkg-btn">Select Standard</a>
+    </div>
+
+    <div class="package-card vip">
+      <span class="vip-badge">VIP Choice</span>
+      <div class="pkg-header">
+        <h3>Premium Plan</h3>
+        <p>Full 360° marketing, reels & ad management.</p>
+        <div class="pkg-price">PKR 25,000</div>
+      </div>
+      <ul class="pkg-features">
+        <li><i class="fas fa-check-circle"></i> 3 Social Media Platforms</li>
+        <li><i class="fas fa-check-circle"></i> 20 Posts Per Month</li>
+        <li><i class="fas fa-check-circle"></i> 8 Short Reels Per Month</li>
+        <li><i class="fas fa-check-circle"></i> Content Strategy & Scheduling</li>
+        <li><i class="fas fa-check-circle"></i> Audience Engagement Support</li>
+        <li><i class="fas fa-check-circle"></i> Monthly Analytics & Report</li>
+        <li><i class="fas fa-check-circle"></i> FB/IG Ads Management (Your Budget)</li>
+      </ul>
+      <a href="order.html?plan=Digital Marketing - Premium" class="pkg-btn">Select Premium</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="padding: 30px 8%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #6b7280; font-size: 14px;">
+    <p>&copy; 2026 Isbah Arif. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Category Switching -->
+  <script>
+    function switchCategory(catName, btnElement) {
+      const allGroups = document.querySelectorAll('.pkg-group');
+      allGroups.forEach(group => group.classList.remove('active-group'));
+
+      const allBtns = document.querySelectorAll('.pkg-tab-btn');
+      allBtns.forEach(btn => btn.classList.remove('active-tab'));
+
+      document.getElementById(catName + '-plans').classList.add('active-group');
+      btnElement.classList.add('active-tab');
+    }
+  </script>
+
+</body>
+</html>

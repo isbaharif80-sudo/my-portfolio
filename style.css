@@ -1,0 +1,1945 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   1. GLOBAL VARIABLES & RESET
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-dark: #0d0f12;
+  --bg-card: #12141c;
+  --bg-card-hover: #1a1d29;
+  --primary: #ff6b00;
+  --primary-hover: #e05d00;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(255, 107, 0, 0.3);
+  --glow: rgba(255, 107, 0, 0.15);
+  --accent-blue: #00d2ff;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Glowing Blobs */
+.bg-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
+  animation: float 9s infinite alternate ease-in-out;
+}
+.blob-1 { background: var(--primary); top: 5%; left: -5%; }
+.blob-2 { background: var(--accent-blue); top: 45%; right: -5%; }
+.blob-3 { background: var(--primary); top: 85%; left: 10%; }
+
+@keyframes float {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(50px) scale(1.1); }
+}
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION
+   ========================================================================== */
+header {
+  padding: 18px 8%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(13, 15, 18, 0.85);
+  backdrop-filter: blur(14px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+}
+.logo span { color: var(--primary); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #a1a1aa;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent-blue);
+}
+
+/* Contact Button */
+.btn-nav, 
+a.btn-nav, 
+header .btn-nav {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;  
+  padding: 10px 22px !important;
+  border-radius: 30px !important;
+  font-weight: 700 !important;
+  display: inline-block !important;
+  text-align: center;
+  border: none !important;
+  box-shadow: 0 4px 15px var(--glow);
+  transition: 0.3s ease;
+}
+
+.btn-nav:hover,
+a.btn-nav:hover,
+header .btn-nav:hover {
+  background-color: var(--primary-hover) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  padding: 140px 8% 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.badge {
+  background: rgba(255, 107, 0, 0.15);
+  color: var(--primary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  display: inline-block;
+}
+
+.hero h1 {
+  font-size: 56px;
+  margin: 18px 0 10px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.highlight {
+  background: linear-gradient(90deg, var(--primary), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: 20px;
+  color: #e4e4e7;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.sub-text {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), #ff8800);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(255, 107, 0, 0.5);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* Hero Image & Vertical Badge Layout */
+.hero-image {
+  position: relative;
+  width: 300px;
+  height: 360px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-frame {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed rgba(0, 210, 255, 0.3);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Original Vertical Floating Badge */
+.floating-badge {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: -35px !important;
+  width: 125px !important;
+  background: rgba(15, 17, 21, 0.95) !important;
+  border: 1px solid var(--accent-blue) !important;
+  padding: 14px 10px !important;
+  border-radius: 20px !important;
+  text-align: center !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  z-index: 20 !important;
+}
+
+.floating-badge i {
+  color: var(--accent-blue);
+  font-size: 18px;
+}
+
+.floating-badge .badge-num {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent-blue);
+  line-height: 1;
+}
+
+.floating-badge .badge-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   4. MARQUEE & STATS
+   ========================================================================== */
+.marquee-section {
+  padding: 30px 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.01);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.marquee-title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #6b7280;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.marquee-container { overflow: hidden; white-space: nowrap; }
+
+.marquee-track {
+  display: inline-block;
+  animation: marquee 18s linear infinite;
+}
+
+.marquee-track span {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin: 0 30px;
+}
+
+.marquee-track i { color: var(--primary); margin-right: 6px; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 8%;
+  background: rgba(255, 255, 255, 0.02);
+  margin: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.stat-card { text-align: center; }
+
+.stat-card h2, 
+.stat-card span, 
+.counter-num,
+.counter-float,
+.stat-number {
+  display: inline-block;
+  font-size: 42px !important;
+  font-weight: 800 !important;
+  color: var(--accent-blue) !important;
+}
+
+.stat-card p {
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   5. SERVICES & SKILLS
+   ========================================================================== */
+.services, .skills-section, .contact-cta {
+  padding: 70px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title { text-align: center; margin-bottom: 50px; }
+.section-title h2 { font-size: 38px; }
+.section-title h2 span { color: var(--primary); }
+.section-title p { color: var(--text-muted); margin-top: 6px; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 25px;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(255, 107, 0, 0.15);
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 107, 0, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.service-card h3 { margin-bottom: 12px; font-size: 20px; }
+.service-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+
+.skills-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skill-box {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 18px 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent-blue));
+  border-radius: 10px;
+}
+
+/* Contact CTA */
+.cta-box {
+  background: linear-gradient(135deg, rgba(255,107,0,0.1), rgba(0,210,255,0.1));
+  border: 1px solid rgba(0,210,255,0.2);
+  border-radius: 24px;
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.cta-box h2 { font-size: 34px; margin-bottom: 12px; }
+.cta-box h2 span { color: var(--accent-blue); }
+.cta-box p { color: var(--text-muted); margin-bottom: 25px; }
+
+.email-copy-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: #0f1115;
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.email-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#copyBtn {
+  background: var(--accent-blue);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#copyBtn:hover { background: #fff; }
+.copy-msg { display: none; margin-top: 15px; color: var(--accent-blue); font-weight: 600; font-size: 14px; }
+
+/* ==========================================================================
+   6. PORTFOLIO CARDS & GRID
+   ========================================================================== */
+.portfolio-hero {
+  text-align: center;
+  padding: 140px 20px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.portfolio-hero h1 { 
+  font-size: 42px; 
+  font-weight: 800; 
+  margin-bottom: 16px; 
+  color: #fff;
+}
+
+.portfolio-hero p { 
+  color: var(--text-muted); 
+  font-size: 16px; 
+}
+
+.portfolio-section { 
+  max-width: 1200px; 
+  margin: 0 auto 80px; 
+  padding: 0 24px; 
+}
+
+.filter-tabs { 
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  gap: 12px; 
+  margin-bottom: 40px; 
+}
+
+.filter-btn {
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.filter-btn:hover, 
+.filter-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 15px var(--glow);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-highlight);
+  background: var(--bg-card-hover);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-img { 
+  position: relative; 
+  width: 100%; 
+  height: 240px; 
+  overflow: hidden; 
+}
+
+.card-img img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform 0.5s ease; 
+}
+
+.project-card:hover .card-img img { 
+  transform: scale(1.05); 
+}
+
+.card-img .overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(9, 10, 15, 0.6);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  color: #fff; font-weight: 600; opacity: 0; transition: opacity 0.3s ease;
+}
+
+.project-card:hover .card-img .overlay { 
+  opacity: 1; 
+}
+
+.card-info { 
+  padding: 24px; 
+  flex-grow: 1;
+}
+
+.cat-tag {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-info h3 { 
+  font-size: 20px; 
+  font-weight: 700; 
+  margin-bottom: 8px; 
+  color: #fff; 
+}
+
+.card-info p { 
+  color: var(--text-muted); 
+  font-size: 14px; 
+  line-height: 1.5; 
+}
+
+/* Full Project Page Modal */
+.project-page-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #090a0f;
+  z-index: 99999;
+  overflow-y: auto;
+  padding: 40px 8%;
+}
+
+.project-page-modal.active { 
+  display: block; 
+  animation: fadeIn 0.3s ease; 
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.project-page-header { margin-bottom: 30px; }
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover { 
+  background: var(--primary); 
+  color: #fff; 
+  border-color: var(--primary); 
+}
+
+.project-title-box { text-align: center; margin-bottom: 50px; }
+.project-title-box h1 { font-size: 36px; font-weight: 800; color: #fff; margin: 10px 0; }
+.project-title-box p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 15px; }
+
+/* Masonry Grid inside Modal */
+.project-gallery-grid {
+  column-count: 3;
+  column-gap: 18px;
+  margin-bottom: 60px;
+}
+
+.gallery-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 18px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover { transform: translateY(-4px); border-color: var(--primary); }
+.gallery-item img { width: 100%; height: auto; display: block; }
+
+/* ==========================================================================
+   7. REVIEWS SECTION & PROOF MODAL
+   ========================================================================== */
+.reviews-section {
+  padding: 80px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reviews-section .section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  align-items: stretch;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: #18181c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff5722;
+}
+
+.stars {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  color: #ccc;
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.client-detail h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.client-role {
+  color: #888;
+  font-size: 12px;
+  display: block;
+}
+
+.btn-proof {
+  margin-top: 18px;
+  background: rgba(37, 211, 102, 0.1);
+  color: #25d366;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.btn-proof:hover {
+  background: #25d366;
+  color: #000;
+}
+
+.proof-modal {
+  display: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(8px);
+  z-index: 999999 !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.proof-modal.active {
+  display: flex !important;
+}
+
+.proof-modal .modal-content {
+  max-width: 85% !important;
+  max-height: 80vh !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  object-fit: contain;
+}
+
+.proof-modal .close-modal {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000000 !important;
+}
+
+/* ==========================================================================
+   8. FOOTER & RESPONSIVE
+   ========================================================================== */
+footer {
+  padding: 30px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.socials a { color: #6b7280; margin-left: 18px; font-size: 18px; transition: 0.3s; }
+.socials a:hover { color: var(--primary); }
+
+@media (max-width: 1024px) { 
+  .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .project-gallery-grid { column-count: 2; } 
+}
+
+@media (max-width: 768px) {
+  .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+  .hero-btns { justify-content: center; }
+  .img-frame img { width: 100%; max-width: 300px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+@media (max-width: 600px) { 
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .project-gallery-grid { column-count: 1; } 
+}
+/* ==========================================
+   MOBILE RESPONSIVE FIXES (Max Width 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  /* 1. Header & Navbar Optimization */
+  header {
+    padding: 10px 4% !important;
+  }
+  
+  .navbar {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 5px !important;
+  }
+
+  .logo {
+    font-size: 18px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  /* Ek hi line mein saare links fit karne ke liye */
+  .nav-links {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: auto !important; /* Agar screen bohot choti ho to smooth horizontal bar */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for clean UI */
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links li a {
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+    white-space: nowrap !important;
+  }
+
+  .btn-nav {
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+    border-radius: 15px !important;
+  }
+
+  /* 2. Hero Section & Subheadings */
+  .hero, .portfolio-hero, .packages-hero {
+    padding-top: 90px !important;
+    padding-bottom: 20px !important;
+  }
+
+  h1 {
+    font-size: 26px !important;
+    line-height: 1.3 !important;
+  }
+
+  p {
+    font-size: 13px !important;
+  }
+
+  /* 3. Category Buttons Compact View */
+  .category-buttons, .filter-buttons, .category-tabs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    margin: 15px auto 20px !important;
+    padding: 0 5px !important;
+  }
+
+  .pkg-tab-label, .filter-btn, .cat-btn, .pkg-tab-btn {
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    gap: 4px !important;
+  }
+
+  .pkg-tab-label i, .filter-btn i, .cat-btn i {
+    font-size: 10px !important;
+  }
+
+  /* 4. Portfolio & Package Grid Fixes */
+  .pkg-group.show-group, .portfolio-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+    padding: 0 4% !important;
+  }
+
+  .package-card, .portfolio-card {
+    padding: 20px 16px !important;
+  }
+}
+/* ======================================================
+   COMPLETE MOBILE RESPONSIVE FIXES (Sleek & Professional)
+   ====================================================== */
+@media screen and (max-width: 768px) {
+  
+  /* 1. Header & Navbar Adjustment */
+  header {
+    padding: 10px 3% !important;
+  }
+
+  .navbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .logo {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+  }
+
+  /* Single Line Compact Navbar Links */
+  .nav-links {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links li a {
+    font-size: 11px !important;
+    padding: 4px 6px !important;
+    white-space: nowrap !important;
+  }
+
+  .btn-nav {
+    padding: 4px 10px !important;
+    font-size: 11px !important;
+    border-radius: 15px !important;
+  }
+
+  /* 2. Hero Section & Main Headings Sizing */
+  .hero, .portfolio-hero, .packages-hero {
+    padding: 90px 15px 25px !important;
+    text-align: center !important;
+  }
+
+  .badge, .badge-pill {
+    font-size: 11px !important;
+    padding: 5px 12px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hero h1, .portfolio-hero h1, .packages-hero h1 {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hero p, .portfolio-hero p, .packages-hero p, .hero-subtitle {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    max-width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* 3. Hero CTA Buttons Sizing Fix (Chota aur Balanced Look) */
+  .hero-btns, .cta-buttons, .hero-buttons {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .btn-primary, .btn-secondary, .hero-btns a, .cta-buttons a {
+    padding: 10px 18px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    border-radius: 25px !important;
+    width: auto !important;
+    min-width: unset !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+  }
+
+  .btn-primary i, .btn-secondary i, .hero-btns a i {
+    font-size: 11px !important;
+  }
+
+  /* 4. Category Filter Buttons Sizing Fix */
+  .category-buttons, .filter-buttons, .category-tabs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin: 15px auto 20px !important;
+    padding: 0 5px !important;
+  }
+
+  .pkg-tab-label, .filter-btn, .cat-btn, .pkg-tab-btn {
+    font-size: 11px !important;
+    padding: 7px 14px !important;
+    border-radius: 20px !important;
+    gap: 6px !important;
+  }
+
+  .pkg-tab-label i, .filter-btn i, .cat-btn i {
+    font-size: 10px !important;
+  }
+
+  /* 5. Cards & Grids Sizing Adjustments */
+  .pkg-group.show-group, .portfolio-grid, .services-grid, .skills-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 0 3% !important;
+  }
+
+  .package-card, .portfolio-card, .service-card, .review-card {
+    padding: 20px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .pkg-header h3, .service-card h3 {
+    font-size: 18px !important;
+  }
+
+  .pkg-price {
+    font-size: 28px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .pkg-features li {
+    font-size: 12px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .pkg-btn {
+    padding: 10px 0 !important;
+    font-size: 12px !important;
+    border-radius: 20px !important;
+  }
+}
+/* ======================================================
+   MOBILE PROFILE IMAGE & BADGE FIXES (Max Width 768px)
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* Profile Image Wrapper & Image Sizing */
+  .hero-img-container, .profile-img-box, .about-img-box {
+    max-width: 220px !important; /* Mobile par picture ka size chota kar diya */
+    margin: 20px auto 15px !important;
+    position: relative !important;
+  }
+
+  .hero-img-container img, .profile-img-box img, .about-img-box img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 20px !important; /* Sleek rounded corners */
+    object-fit: cover !important;
+  }
+
+  /* Floating Badge (Client Satisfaction) Compact Look */
+  .floating-badge, .badge-experience, .badge-satisfaction {
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 10px !important;
+    gap: 6px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+    
+    /* Position adjust for smaller screen */
+    bottom: 10px !important;
+    right: -5px !important;
+    max-width: 150px !important;
+  }
+
+  .floating-badge i, .badge-satisfaction i {
+    font-size: 11px !important;
+  }
+
+  .floating-badge span, .badge-satisfaction span {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+  }
+}
+/* ======================================================
+   INDEX.HTML COMPLETE MOBILE COMPACT & SLEEK STYLING
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. Brand Marquee Slider (Chota & Sleek View) */
+  .marquee-section {
+    padding: 15px 0 !important;
+  }
+
+  .marquee-title {
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .marquee-track span {
+    font-size: 11px !important;
+    padding: 0 12px !important;
+  }
+
+  .marquee-track i {
+    font-size: 10px !important;
+    margin-right: 4px !important;
+  }
+
+  /* 2. Stats Section (4 Columns in Single Row) */
+  .stats {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+    padding: 15px 8px !important;
+  }
+
+  .stat-card {
+    padding: 8px 4px !important;
+    text-align: center !important;
+  }
+
+  .counter-num, .counter-float {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .stat-card p {
+    font-size: 9px !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* 3. Section Titles (Headings Choti Kar Di Hain) */
+  .section-title {
+    margin-bottom: 20px !important;
+  }
+
+  .section-title h2 {
+    font-size: 20px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .section-title p {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* 4. Specialities / Services (3 Cards Side-by-Side Horizontal Scroll/Grid View) */
+  .services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Laptop ki tarah teeno sath */
+    gap: 8px !important;
+    padding: 0 5px !important;
+  }
+
+  .service-card {
+    padding: 12px 8px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+  }
+
+  .card-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+    margin: 0 auto 8px !important;
+  }
+
+  .service-card h3 {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+    font-weight: 700 !important;
+  }
+
+  .service-card p {
+    font-size: 9.5px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* 5. Client Reviews (Compact Grid View) */
+  .reviews-section {
+    padding: 30px 10px !important;
+  }
+
+  .reviews-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .review-card {
+    padding: 12px 8px !important;
+    border-radius: 12px !important;
+  }
+
+  .stars {
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .review-text {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .client-detail h4 {
+    font-size: 11px !important;
+  }
+
+  .client-role {
+    font-size: 9px !important;
+  }
+
+  .btn-proof {
+    padding: 5px 8px !important;
+    font-size: 9px !important;
+    margin-top: 8px !important;
+  }
+
+  /* 6. Skillset Section (Compact Progress Bars) */
+  .skills-section {
+    padding: 30px 12px !important;
+  }
+
+  .skill-box {
+    margin-bottom: 12px !important;
+  }
+
+  .skill-info {
+    font-size: 11px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .progress-bar {
+    height: 6px !important;
+    border-radius: 10px !important;
+  }
+
+  /* 7. Contact CTA Email Section (Compact Container) */
+  .contact-cta {
+    padding: 30px 10px !important;
+  }
+
+  .cta-box {
+    padding: 20px 12px !important;
+    border-radius: 16px !important;
+  }
+
+  .cta-box h2 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cta-box p {
+    font-size: 11px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .email-copy-wrapper {
+    flex-direction: row !important;
+    gap: 6px !important;
+    justify-content: center !important;
+  }
+
+  .email-link {
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+  }
+
+  #copyBtn {
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+  }
+}
+
+  .stat-item, .counter-box {
+    text-align: center !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Stat Numbers Ko Chota Banane Ke Liye */
+  .stat-item h2, .stat-item h3, .counter-box h3, .stat-number {
+    font-size: 22px !important; /* Numbers ka size chota kar diya */
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Stat Labels (Projects Completed, Happy Clients text) */
+  .stat-item p, .counter-box p, .stat-label {
+    font-size: 10px !important; /* Label text compact kar diya */
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    color: var(--text-muted) !important;
+    white-space: nowrap !important;
+  }
+}
+/* ======================================================
+   SUPER COMPACT / MICRO FIX: HERO IMAGE, BADGE & STATS
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. Hero Image Container Ko Aur Chota Kar Diya (110px) */
+  .hero-image {
+    max-width: 110px !important;
+    margin: 10px auto 12px !important;
+    position: relative !important;
+  }
+
+  .img-frame {
+    width: 100% !important;
+    height: 110px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+  }
+
+  .img-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* 2. Floating Badge (Micro Size) */
+  .floating-badge {
+    padding: 3px 6px !important;
+    border-radius: 6px !important;
+    border: 1px solid var(--primary) !important;
+    bottom: -5px !important;
+    left: -8px !important;
+    background: rgba(18, 20, 28, 0.95) !important;
+  }
+
+  .floating-badge i {
+    font-size: 7px !important;
+  }
+
+  .badge-num {
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+  }
+
+  .badge-text {
+    font-size: 7px !important;
+    line-height: 1 !important;
+  }
+
+  /* 3. Stat Numbers Ko Aur Chota Kar Diya (12px Font Size) */
+  .stats {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 2px !important;
+    padding: 6px 2px !important;
+    margin-top: 10px !important;
+  }
+
+  .stat-card {
+    padding: 2px 1px !important;
+  }
+
+  .counter-num, .counter-float {
+    font-size: 12px !important; /* Extremely neat and small numbers */
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .stat-card p {
+    font-size: 7.5px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+}
+/* ======================================================
+   FORCED SPECIFICITY FIX FOR HERO IMAGE & STAT NUMBERS
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* Profile Picture Outer & Inner Frame */
+  section.hero .hero-image,
+  div.hero-image,
+  .hero-image .img-frame {
+    width: 100px !important;
+    max-width: 100px !important;
+    height: 100px !important;
+    max-height: 100px !important;
+    margin: 10px auto !important;
+    border-radius: 10px !important;
+  }
+
+  .hero-image .img-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* 100% Client Satisfaction Badge */
+  .hero-image .floating-badge {
+    padding: 2px 6px !important;
+    bottom: -5px !important;
+    left: -10px !important;
+    border-radius: 6px !important;
+  }
+
+  .hero-image .floating-badge .badge-num {
+    font-size: 8px !important;
+    line-height: 1 !important;
+  }
+
+  .hero-image .floating-badge .badge-text {
+    font-size: 6px !important;
+    line-height: 1 !important;
+  }
+
+  /* Bottom Counter Numbers (150+, 35+, 50+, 4.9/5) */
+  section.stats .stat-card h2.counter-num,
+  section.stats .stat-card h2.counter-float,
+  .counter-num,
+  .counter-float {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    margin-bottom: 2px !important;
+  }
+
+  section.stats .stat-card p {
+    font-size: 7.5px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+}
+/* ======================================================
+   PORTFOLIO.HTML MOBILE COMPACT FIX
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. Portfolio Hero Section Sizing */
+  .portfolio-hero,
+  section.portfolio-hero {
+    padding: 75px 12px 15px !important;
+    text-align: center !important;
+  }
+
+  /* Badge: "My Featured Work" */
+  .portfolio-hero .badge,
+  .portfolio-hero .badge-pill,
+  .portfolio-hero span {
+    font-size: 10px !important;
+    padding: 3px 10px !important;
+    margin-bottom: 8px !important;
+    display: inline-block !important;
+  }
+
+  /* Heading: "Explore My Industry Projects" */
+  .portfolio-hero h1 {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+    font-weight: 800 !important;
+  }
+
+  /* Subtitle Text */
+  .portfolio-hero p {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    max-width: 95% !important;
+    margin: 0 auto 15px !important;
+    color: var(--text-muted, #9ca3af) !important;
+  }
+
+  /* 2. Category Filter Buttons Grid (Super Compact & Clean) */
+  .filter-buttons,
+  .portfolio-filters,
+  .category-buttons,
+  .filter-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    padding: 0 4px !important;
+    margin: 10px auto 20px !important;
+  }
+
+  /* Individual Category Pill Buttons */
+  .filter-btn,
+  .cat-btn, .portfolio-hero button,
+  .filter-buttons button {
+    font-size: 10px !important;
+    padding: 5px 10px !important;
+    border-radius: 15px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+  }
+
+  /* 3. Portfolio Project Cards Grid (2 Columns or Single Column Sleek) */
+  .portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+    gap: 10px !important;
+    padding: 0 8px !important;
+  }
+
+  .portfolio-card {
+    padding: 10px !important;
+    border-radius: 12px !important;
+  }
+
+  .portfolio-card img {
+    border-radius: 8px !important;
+  }
+
+  .portfolio-card h3 {
+    font-size: 12px !important;
+    margin: 6px 0 2px !important;
+  }
+
+  .portfolio-card p {
+    font-size: 9.5px !important;
+  }
+}
+/* ======================================================
+   PORTFOLIO CARDS COMPACT FIX (HIDE WHITE TEXT ON MOBILE)
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. Portfolio Cards Grid Adjustment */
+  .portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 Columns Side by Side */
+    gap: 10px !important;
+    padding: 0 8px !important;
+  }
+
+  /* Card Outer Box Padding Reduction */
+  .portfolio-card, 
+  .project-card {
+    padding: 10px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+  }
+
+  /* Picture Height & Radius */
+  .portfolio-card img, 
+  .project-card img {
+    height: 110px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Orange Category Tag (RESTAURANTS & FOOD, BEAUTY & COSMETICS) */
+  .portfolio-card .category-tag,
+  .portfolio-card span,
+  .portfolio-card h4,
+  .project-card span {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    color: var(--primary, #ff6b00) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* 2. White Headings & Paragraph Descriptions Ko Hide Kar Diya */
+  .portfolio-card h3,
+  .portfolio-card p,
+  .project-card h3,
+  .project-card p {
+    display: none !important; /* Bada white text aur paragraph completely hide ho jayega */
+  }
+
+  /* Card Action / View Button (Upar Khinchne Ke Liye) */
+  .portfolio-card .card-btn,
+  .portfolio-card a {
+    margin-top: 6px !important;
+    padding: 4px 8px !important;
+    font-size: 9px !important;
+    border-radius: 12px !important;
+  }
+}
+/* ======================================================
+   ULTIMATE PORTFOLIO CLEAN & COMPACT MOBILE FIX
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. Upar Ka Sub Text, Badge Aur Buttons Completely Hide */
+  .portfolio-hero,
+  .portfolio-hero *,
+  .portfolio-filters,
+  .filter-buttons,
+  .category-buttons,
+  .filter-container {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 2. Direct Cards Grid (Navbar ke niche se tight start) */
+  .portfolio-grid,
+  .projects-grid,
+  main {
+    padding-top: 75px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    align-items: start !important;
+    align-content: start !important;
+  }
+
+  /* 3. Cards Light & Compact Outer Shrink */
+  .portfolio-card,
+  .project-card,
+  div[class*="card"] {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    border-radius: 10px !important;
+  }
+
+  /* 4. Image Height Control */
+  .portfolio-card img,
+  .project-card img {
+    width: 100% !important;
+    height: 90px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* 5. Card Ke Andar Ka Extra Text/Heading Complete Hide */
+  .portfolio-card h3,
+  .portfolio-card p,
+  .portfolio-card a,
+  .portfolio-card .btn,
+  .project-card h3,
+  .project-card p {
+    display: none !important;
+  }
+
+  /* 6. Bas Orange Category Name Picture Ke Niche Compact Dikhay */
+  .portfolio-card span,
+  .portfolio-card h4,
+  .portfolio-card .category-tag,
+  .project-card span {
+    display: block !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    color: var(--primary, #ff6b00) !important;
+    text-align: center !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+  }
+}
+/* ======================================================
+   EXACT TARGETED FIX FOR PORTFOLIO.HTML (MOBILE ONLY)
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* 1. Top Header Text & Filter Category Buttons Ko Hide Kar Diya */
+  .portfolio-hero,
+  .filter-tabs {
+    display: none !important;
+  }
+
+  /* 2. Direct Cards Grid Alignment (Navbar ke niche se tight grid) */
+  .portfolio-section {
+    padding-top: 70px !important;
+  }
+
+  .portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    align-items: start !important;
+  }
+
+  /* 3. Card Container Length & Space Fixed */
+  .project-card {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: 10px !important;
+  }
+
+  .card-img {
+    height: auto !important;
+    margin-bottom: 4px !important;
+  }
+
+  .card-img img {
+    width: 100% !important;
+    height: 95px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+    display: block !important;
+  }
+
+  /* Image ke upar ka hover overlay remove */
+  .card-img .overlay {
+    display: none !important;
+  }
+
+  /* 4. Card Info Wrapper & Inner Spacing Fix */
+  .card-info {
+    padding: 2px 0 0 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+
+  /* 5. White Headings (h3) aur White Paragraphs (p) Ko Remove Kar Diya */
+  .card-info h3,
+  .card-info p {
+    display: none !important;
+  }
+
+  /* 6. Orange Tag (Restaurants & Food, Beauty & Cosmetics etc.) Picture ke bilkul niche fit */
+  .card-info .cat-tag {
+    display: block !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    color: var(--primary, #ff6b00) !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.1 !important;
+  }
+}
+/* ======================================================
+   FIX: ALIGN STAR & 100% IN THE SAME LINE (DESKTOP & MOBILE)
+   ====================================================== */
+.floating-badge {
+  display: flex !important;
+  flex-direction: row !important; /* Star aur 100% ko ek row mein lane ke liye */
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: auto !important;
+  padding: 8px 12px !important;
+}
+
+.floating-badge i {
+  font-size: 14px !important;
+  margin: 0 !important;
+}
+
+/* Number aur text ke container ko vertical stack karne ke liye */
+.floating-badge div, 
+.floating-badge span.badge-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.floating-badge .badge-num {
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+.floating-badge .badge-text {
+  font-size: 8px !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+/* ======================================================
+   FIX: REMOVE TOP GAP ABOVE PORTFOLIO CARDS (MOBILE)
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  /* Portfolio section ka top padding bilkul zero kar diya */
+  .portfolio-section {
+    padding-top: 10px !important;
+    margin-top: 0 !important;
+  }
+
+  /* Portfolio grid ka top margin khatam */
+  .portfolio-grid {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+/* ======================================================
+   FIX: PREVENT PORTFOLIO CARD THUMBNAILS FROM CROPPING
+   ====================================================== */
+.card-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important; /* Image crop hone se bachane ke liye */
+  background-color: var(--bg-card) !important; /* Agar side mein space aaye toh dark background match ho jaye */
+}
+/* ======================================================
+   PERFECT STATS FIX: 2x2 GRID LAYOUT FOR MOBILE
+   ====================================================== */
+@media screen and (max-width: 768px) {
+
+  .stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columns per row */
+    gap: 12px 8px !important;
+    padding: 20px 10px !important;
+    text-align: center !important;
+  }
+
+  .stat-card {
+    padding: 10px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+  }
+
+  .counter-num, 
+  .counter-float, 
+  .stat-card h2, 
+  .stat-number {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+  }
+
+  .stat-card p {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    margin-top: 4px !important;
+    white-space: nowrap !important;
+  }
+}
+
+
+  .pkg-header h3 {
+    font-size: 18px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .pkg-header p {
+    font-size: 13px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .pkg-price {
+    font-size: 24px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .pkg-features {
+    margin-bottom: 20px !important;
+  }
+
+  .pkg-features li {
+    font-size: 12px !important;
+    margin-bottom: 8px !important;
+    gap: 8px !important;
+  }
+
+  .pkg-btn {
+    padding: 10px 0 !important;
+    font-size: 12px !important;
+    border-radius: 20px !important;
+  }
+}

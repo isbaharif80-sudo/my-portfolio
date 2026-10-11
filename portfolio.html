@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Isbah Arif</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Glow Blobs -->
+  <div class="bg-glow blob-1"></div>
+  <div class="bg-glow blob-2"></div>
+
+  <!-- Navbar -->
+ <header>
+  <nav class="navbar">
+    <a href="index.html" class="logo">ISBAH<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
+      <li><a href="packages.html">Packages</a></li> <!-- Direct link to packages.html -->
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#about">About & Skills</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="#contact" class="btn-nav">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+  <!-- Portfolio Header -->
+  <section class="portfolio-hero">
+    <span class="badge"><i class="fas fa-briefcase"></i> My Featured Work</span>
+    <h1>Explore My <span class="highlight">Industry Projects</span></h1>
+    <p>A collection of high-converting social media creatives, video edits, AI ads, and marketing campaigns tailored for different niches.</p>
+  </section>
+
+  <!-- Filter Category Tabs -->
+  <section class="portfolio-section">
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="all">All Industries</button>
+      <button class="filter-btn" data-filter="food">Restaurants</button>
+      <button class="filter-btn" data-filter="beauty">Beauty & Cosmetics</button>
+      <button class="filter-btn" data-filter="realestate">Real Estate</button>
+      <button class="filter-btn" data-filter="featured">Featured Designs</button>
+      <button class="filter-btn" data-filter="doctor">Healthcare</button>
+      <button class="filter-btn" data-filter="travel">Travel Agencies</button>
+      <button class="filter-btn" data-filter="video">Animated Videos</button>
+      <button class="filter-btn" data-filter="thumbnail">Thumbnails</button>
+      <button class="filter-btn" data-filter="menu">Menu Design</button>
+    </div>
+
+    <!-- Responsive Grid of Projects -->
+    <div class="portfolio-grid">
+
+      <!-- Item 1: Restaurants -->
+      <div class="project-card" data-category="food" onclick="openProjectPage('food')">
+        <div class="card-img">
+          <img src="images/food-1.png" alt="Restaurants & Food" onerror="this.src='images/food-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Restaurants & Food</span>
+          <h3>Restaurant Branding & Menu Creatives</h3>
+          <p>High-converting food posts, menu card designs & promotional deals.</p>
+        </div>
+      </div>
+
+      <!-- Item 2: Beauty -->
+      <div class="project-card" data-category="beauty" onclick="openProjectPage('beauty')">
+        <div class="card-img">
+          <img src="images/beauty-1.png" alt="Beauty & Cosmetics" onerror="this.src='images/beauty-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Beauty & Cosmetics</span>
+          <h3>Product Launch & UGC Style Ads</h3>
+          <p>Aesthetic product showcases & engaging reel edits.</p>
+        </div>
+      </div>
+
+      <!-- Item 3: Real Estate -->
+      <div class="project-card" data-category="realestate" onclick="openProjectPage('realestate')">
+        <div class="card-img">
+          <img src="images/realestate-1.png" alt="Real Estate Agencies" onerror="this.src='images/realestate-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Real Estate Agencies</span>
+          <h3>Property Listings & Ad Creatives</h3>
+          <p>Professional property showcase banners & lead-gen ads.</p>
+        </div>
+      </div>
+
+      <!-- Item 4: Featured Designs -->
+      <div class="project-card" data-category="featured" onclick="openProjectPage('featured')">
+        <div class="card-img">
+          <img src="images/featured-1.png" alt="Featured Designs" onerror="this.src='images/featured-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Featured Designs</span>
+          <h3>Custom Brand Visuals & Creatives</h3>
+          <p>Signature branding concepts & premium social graphics.</p>
+        </div>
+      </div>
+
+      <!-- Item 5: Doctors -->
+      <div class="project-card" data-category="doctor" onclick="openProjectPage('doctor')">
+        <div class="card-img">
+          <img src="images/doctor-1.png" alt="Doctors & Healthcare" onerror="this.src='images/doctor-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Doctors & Healthcare</span>
+          <h3>Clinic Branding & Medical Carousels</h3>
+          <p>Patient awareness carousels & clinic promotion banners.</p>
+        </div>
+      </div>
+
+      <!-- Item 6: Travel Agencies -->
+      <div class="project-card" data-category="travel" onclick="openProjectPage('travel')">
+        <div class="card-img">
+          <img src="images/travel-1.png" alt="Travel Agencies" onerror="this.src='images/travel-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Travel Agencies</span>
+          <h3>Tour Packages & Vacation Creatives</h3>
+          <p>Eye-catching vacation deal banners & travel promo posts.</p>
+        </div>
+      </div>
+
+      <!-- Item 7: Animated Videos -->
+      <div class="project-card" data-category="video" onclick="openProjectPage('video')">
+        <div class="card-img">
+          <img src="images/video-1.png" alt="Animated Videos" onerror="this.src='images/video-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Animated Videos & Reels</span>
+          <h3>Motion Graphics, Reels & AI Video Ads</h3>
+          <p>High-engagement motion graphics, reels, and AI animated promo videos.</p>
+        </div>
+      </div>
+
+      <!-- Thumbnail Item 8 (Fixed Structure) -->
+      <div class="project-card" data-category="thumbnail" onclick="openProjectPage('thumbnail')">
+        <div class="card-img">
+          <img src="images/thumb-1.png" alt="YouTube Thumbnail Design" onerror="this.src='images/thumb-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Thumbnails</span>
+          <h3>Catchy YouTube Thumbnail</h3>
+          <p>High CTR Gaming / Vlogs Thumbnail</p>
+        </div>
+      </div>
+
+      <!-- Menu Item 9 (Fixed Structure) -->
+      <div class="project-card" data-category="menu" onclick="openProjectPage('menu')">
+        <div class="card-img">
+          <img src="images/menu-1.png" alt="Restaurant Menu Design" onerror="this.src='images/menu-1.jpg'">
+          <div class="overlay"><i class="fas fa-arrow-right"></i> View Full Collection</div>
+        </div>
+        <div class="card-info">
+          <span class="cat-tag">Menu Design</span>
+          <h3>Cafe & Restaurant Menu</h3>
+          <p>Modern Bi-fold Food Menu</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Full Dedicated Project View Modal Page -->
+  <div id="project-page" class="project-page-modal">
+    <div class="project-page-header">
+      <button class="back-btn" onclick="closeProjectPage()"><i class="fas fa-arrow-left"></i> Back to Portfolio</button>
+    </div>
+    
+    <div class="project-page-content">
+      <div class="project-title-box">
+        <span id="page-category" class="cat-tag">CATEGORY</span>
+        <h1 id="page-title">Project Title</h1>
+        <p id="page-desc">Project Description</p>
+      </div>
+
+      <!-- Grid view for all images in this project -->
+      <div id="page-gallery-grid" class="project-gallery-grid">
+        <!-- Posts automatically loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Isbah Arif. All Rights Reserved.</p>
+    <div class="socials">
+      <a href="mailto:isbadi205@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

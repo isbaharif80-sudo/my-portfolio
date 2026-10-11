@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Isbah Arif</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Background Glowing Blobs -->
+  <div class="bg-glow blob-1"></div>
+  <div class="bg-glow blob-2"></div>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">ISBAH<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="index.html#contact" class="btn-nav">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="services-page-hero">
+    <span class="badge"><i class="fas fa-cubes"></i> Specialized Solutions</span>
+    <h1>My Professional <span class="highlight">Services</span></h1>
+    <p>Comprehensive creative, marketing, video, and software solutions crafted to elevate your business presence and drive results.</p>
+  </section>
+
+  <!-- Main Services Grid Section -->
+  <section class="services-full-section">
+    <div class="services-container">
+
+      <!-- 1. GRAPHIC DESIGN -->
+      <div class="service-detail-card">
+        <div class="service-header">
+          <div class="service-icon-box">
+            <i class="fas fa-palette"></i>
+          </div>
+          <div class="service-title-area">
+            <h2>Graphic Design</h2>
+            <span class="service-tagline">Visual Identity & Creative Branding</span>
+          </div>
+        </div>
+        
+        <p class="service-desc">
+          I create attractive, professional, and brand-focused designs tailored for businesses and social media to help your brand stand out and capture audience attention.
+        </p>
+
+        <!-- Preview Tags -->
+        <div class="service-tags">
+          <span>Social Media Posts</span>
+          <span>Flyers & Posters</span>
+          <span>Branding & Layouts</span>
+          <span>Banners & Menus</span>
+        </div>
+
+        <!-- Collapsible Full List -->
+        <div class="expandable-list" id="graphic-list">
+          <h4><i class="fas fa-check-circle"></i> Included Services:</h4>
+          <ul>
+            <li><i class="fas fa-angle-right"></i> Social Media Post Design</li>
+            <li><i class="fas fa-angle-right"></i> Instagram Post Design</li>
+            <li><i class="fas fa-angle-right"></i> Facebook Post Design</li>
+            <li><i class="fas fa-angle-right"></i> Flyer Design</li>
+            <li><i class="fas fa-angle-right"></i> Poster Design</li>
+            <li><i class="fas fa-angle-right"></i> Banner Design</li>
+            <li><i class="fas fa-angle-right"></i> Business Card Design</li>
+            <li><i class="fas fa-angle-right"></i> Menu Design</li>
+            <li><i class="fas fa-angle-right"></i> Brochure Design</li>
+            <li><i class="fas fa-angle-right"></i> Promotional Design</li>
+            <li><i class="fas fa-angle-right"></i> Branding & Visual Design</li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-toggle" onclick="toggleService('graphic-list', this)">
+            <span>View All Services</span> <i class="fas fa-chevron-down"></i>
+          </button>
+          <a href="portfolio.html?filter=graphic" class="btn-card-action">View Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 2. VIDEO EDITING -->
+      <div class="service-detail-card">
+        <div class="service-header">
+          <div class="service-icon-box">
+            <i class="fas fa-video"></i>
+          </div>
+          <div class="service-title-area">
+            <h2>Video Editing</h2>
+            <span class="service-tagline">Short-Form Content & Ad Editing</span>
+          </div>
+        </div>
+
+        <p class="service-desc">
+          I create engaging, polished, and social-media-ready videos designed to capture attention, boost engagement, and drive conversions across all platforms.
+        </p>
+
+        <div class="service-tags">
+          <span>Instagram Reels</span>
+          <span>TikTok & Shorts</span>
+          <span>UGC Ads</span>
+          <span>Motion Graphics</span>
+        </div>
+
+        <div class="expandable-list" id="video-list">
+          <h4><i class="fas fa-check-circle"></i> Included Services:</h4>
+          <ul>
+            <li><i class="fas fa-angle-right"></i> Instagram Reels</li>
+            <li><i class="fas fa-angle-right"></i> Facebook Reels</li>
+            <li><i class="fas fa-angle-right"></i> TikTok Videos</li>
+            <li><i class="fas fa-angle-right"></i> YouTube Shorts</li>
+            <li><i class="fas fa-angle-right"></i> UGC Ad Editing</li>
+            <li><i class="fas fa-angle-right"></i> Product Video Editing</li>
+            <li><i class="fas fa-angle-right"></i> Promotional Videos</li>
+            <li><i class="fas fa-angle-right"></i> Video Advertisements</li>
+            <li><i class="fas fa-angle-right"></i> Social Media Videos</li>
+            <li><i class="fas fa-angle-right"></i> Short-Form Video Editing</li>
+            <li><i class="fas fa-angle-right"></i> Basic Motion Graphics</li>
+            <li><i class="fas fa-angle-right"></i> Captions / Subtitles</li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-toggle" onclick="toggleService('video-list', this)">
+            <span>View All Services</span> <i class="fas fa-chevron-down"></i>
+          </button>
+          <a href="portfolio.html?filter=video" class="btn-card-action">View Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 3. SOCIAL MEDIA MANAGEMENT -->
+      <div class="service-detail-card">
+        <div class="service-header">
+          <div class="service-icon-box">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <div class="service-title-area">
+            <h2>Social Media Management</h2>
+            <span class="service-tagline">Account Optimization & Growth</span>
+          </div>
+        </div>
+
+        <p class="service-desc">
+          I help businesses maintain and manage their social media presence professionally and consistently, ensuring regular posting, active engagement, and audience retention.
+        </p>
+
+        <div class="service-tags">
+          <span>Page Management</span>
+          <span>Content Scheduling</span>
+          <span>Caption & Hashtags</span>
+          <span>Audience DM/Comments</span>
+        </div>
+
+        <div class="expandable-list" id="smm-list">
+          <h4><i class="fas fa-check-circle"></i> Included Services:</h4>
+          <ul>
+            <li><i class="fas fa-angle-right"></i> Instagram Page Management</li>
+            <li><i class="fas fa-angle-right"></i> Facebook Page Management</li>
+            <li><i class="fas fa-angle-right"></i> Content Posting & Scheduling</li>
+            <li><i class="fas fa-angle-right"></i> Content Planning</li>
+            <li><i class="fas fa-angle-right"></i> Caption Writing & Hashtag Research</li>
+            <li><i class="fas fa-angle-right"></i> Comment & DM Management</li>
+            <li><i class="fas fa-angle-right"></i> Audience Engagement</li>
+            <li><i class="fas fa-angle-right"></i> Profile / Page Optimization</li>
+            <li><i class="fas fa-angle-right"></i> Content Calendar Management</li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-toggle" onclick="toggleService('smm-list', this)">
+            <span>View All Services</span> <i class="fas fa-chevron-down"></i>
+          </button>
+          <a href="portfolio.html?filter=marketing" class="btn-card-action">View Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 4. SOCIAL MEDIA MARKETING -->
+      <div class="service-detail-card">
+        <div class="service-header">
+          <div class="service-icon-box">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="service-title-area">
+            <h2>Social Media Marketing</h2>
+            <span class="service-tagline">Campaign Strategy & Reach</span>
+          </div>
+        </div>
+
+        <p class="service-desc">
+          I help businesses build their online presence, reach the right audience, and improve engagement through effective, data-driven social media strategies and campaigns.
+        </p>
+
+        <div class="service-tags">
+          <span>Targeted Campaigns</span>
+          <span>Audience Strategy</span>
+          <span>Brand Awareness</span>
+          <span>Growth Planning</span>
+        </div>
+
+        <div class="expandable-list" id="smmk-list">
+          <h4><i class="fas fa-check-circle"></i> Included Services:</h4>
+          <ul>
+            <li><i class="fas fa-angle-right"></i> Social Media Strategy</li>
+            <li><i class="fas fa-angle-right"></i> Content & Audience Growth Strategy</li>
+            <li><i class="fas fa-angle-right"></i> Engagement Strategy</li>
+            <li><i class="fas fa-angle-right"></i> Promotional Campaigns</li>
+            <li><i class="fas fa-angle-right"></i> Brand Awareness Campaigns</li>
+            <li><i class="fas fa-angle-right"></i> Social Media Advertising</li>
+            <li><i class="fas fa-angle-right"></i> Marketing Campaign Planning</li>
+            <li><i class="fas fa-angle-right"></i> Content Promotion</li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-toggle" onclick="toggleService('smmk-list', this)">
+            <span>View All Services</span> <i class="fas fa-chevron-down"></i>
+          </button>
+          <a href="portfolio.html?filter=marketing" class="btn-card-action">View Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- 5. SOFTWARE SOLUTIONS PROVIDER -->
+      <div class="service-detail-card highlight-card">
+        <div class="service-header">
+          <div class="service-icon-box">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="service-title-area">
+            <h2>Software Solutions Provider</h2>
+            <span class="service-tagline">Business Systems & Custom Setup</span>
+          </div>
+        </div>
+
+        <p class="service-desc">
+          I provide turnkey business software solutions, setup, and tailored customization to help businesses streamline their operations, management, and point-of-sale systems.
+        </p>
+
+        <div class="service-tags">
+          <span>Ready-Made Software</span>
+          <span>POS Systems</span>
+          <span>Business Management</span>
+          <span>Custom Setup & Support</span>
+        </div>
+
+        <div class="expandable-list" id="software-list">
+          <h4><i class="fas fa-check-circle"></i> Included Services:</h4>
+          <ul>
+            <li><i class="fas fa-angle-right"></i> Ready-Made Business Software</li>
+            <li><i class="fas fa-angle-right"></i> Business Management Software</li>
+            <li><i class="fas fa-angle-right"></i> POS / Point of Sale Business Solutions</li>
+            <li><i class="fas fa-angle-right"></i> Software Customization Assistance</li>
+            <li><i class="fas fa-angle-right"></i> System Setup & Installation</li>
+            <li><i class="fas fa-angle-right"></i> Technical Support & Onboarding</li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-toggle" onclick="toggleService('software-list', this)">
+            <span>View All Services</span> <i class="fas fa-chevron-down"></i>
+          </button>
+          <a href="index.html#contact" class="btn-card-action">Inquire Solution <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="services-cta">
+    <div class="cta-inner">
+      <h2>Need a Custom Package for Your Business?</h2>
+      <p>Combine multiple services like Graphic Design, Video Editing, and Ads Management into a cost-effective monthly retainer.</p>
+      <a href="mailto:isbadi205@gmail.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Request a Quote</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Isbah Arif. All Rights Reserved.</p>
+    <div class="socials">
+      <a href="mailto:isbadi205@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

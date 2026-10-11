@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Order | Isbah Arif</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0d0f12;
+      --bg-card: #12141c;
+      --primary: #ff6b00;
+      --accent-blue: #00d2ff;
+      --text-muted: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --glow: rgba(255, 107, 0, 0.25);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .bg-glow {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.25;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .blob-1 { background: var(--primary); top: 5%; left: -5%; }
+    .blob-2 { background: var(--accent-blue); top: 50%; right: -5%; }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(13, 15, 18, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: #a1a1aa;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent-blue);
+    }
+
+    .btn-nav {
+      background-color: var(--primary) !important;
+      color: #fff !important;
+      padding: 8px 18px !important;
+      border-radius: 30px !important;
+    }
+
+    .order-container {
+      max-width: 650px;
+      margin: 130px auto 60px;
+      padding: 35px 30px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-sizing: border-box;
+    }
+
+    .order-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .order-header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .order-header p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .highlight-text {
+      background: linear-gradient(90deg, var(--primary), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e4e4e7;
+      margin-bottom: 8px;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: #181b24;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus, 
+    .form-group select:focus, 
+    .form-group textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .form-group select option {
+      background: #181b24;
+      color: #fff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, var(--primary), #ff8800);
+      border: none;
+      border-radius: 30px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px var(--glow);
+    }
+
+    .submit-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media screen and (max-width: 768px) {
+      .order-container {
+        margin: 110px 15px 40px;
+        padding: 25px 18px;
+      }
+      .order-header h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow blob-1"></div>
+  <div class="bg-glow blob-2"></div>
+
+  <!-- Header / Navbar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">ISBAH<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="index.html#contact" class="btn-nav">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Order Form Section -->
+  <div class="order-container">
+    <div class="order-header">
+      <h1>Place Your <span class="highlight-text">Order</span></h1>
+      <p>Fill in the details below to initiate your project.</p>
+    </div>
+
+    <!-- Web3Forms Connected Form -->
+    <form action="https://api.web3forms.com/submit" method="POST" id="orderForm">
+      
+      <!-- Aapki Key lag gayi hai -->
+      <input type="hidden" name="access_key" value="8ef90f5c-449a-4455-b008-0fac693ffbcf">
+      <input type="hidden" name="subject" value="New Service Order from Isbah Arif Portfolio">
+
+      <div class="form-group">
+        <label for="plan">Selected Package / Plan *</label>
+        <select name="Selected Plan" id="plan" required>
+          <option value="" disabled selected>Select a package...</option>
+          <option value="Graphic Design - Basic (PKR 2,000)">Graphic Design - Basic Plan (PKR 2,000)</option>
+          <option value="Graphic Design - Standard (PKR 5,500)">Graphic Design - Standard Plan (PKR 5,500)</option>
+          <option value="Graphic Design - Premium (PKR 15,000)">Graphic Design - Premium Plan (PKR 15,000)</option>
+          <option value="Video Editing - Basic (PKR 1,500)">Video Editing - Basic Plan (PKR 1,500)</option>
+          <option value="Video Editing - Standard (PKR 5,000)">Video Editing - Standard Plan (PKR 5,000)</option>
+          <option value="Video Editing - Premium (PKR 10,000)">Video Editing - Premium Plan (PKR 10,000)</option>
+          <option value="Digital Marketing - Basic (PKR 5,000)">Digital Marketing - Basic Plan (PKR 5,000)</option>
+          <option value="Digital Marketing - Standard (PKR 12,000)">Digital Marketing - Standard Plan (PKR 12,000)</option>
+          <option value="Digital Marketing - Premium (PKR 25,000)">Digital Marketing - Premium Plan (PKR 25,000)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" name="Client Name" id="name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" name="Client Email" id="email" placeholder="example@domain.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone / WhatsApp Number *</label>
+        <input type="text" name="Client Phone" id="phone" placeholder="+92 300 1234567" required>
+      </div>
+
+      <div class="form-group">
+        <label for="details">Project Brief / Requirements *</label>
+        <textarea name="Project Requirements" id="details" rows="4" placeholder="Briefly describe your brand, requirements, or reference links..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Order Now</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Isbah Arif. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Script for auto-selecting option from link -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedPlan = urlParams.get('plan');
+      if (selectedPlan) {
+        const selectElem = document.getElementById('plan');
+        for (let i = 0; i < selectElem.options.length; i++) {
+          if (selectElem.options[i].value.toLowerCase().includes(selectedPlan.toLowerCase())) {
+            selectElem.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
