@@ -1943,3 +1943,66 @@ footer {
     border-radius: 20px !important;
   }
 }
+/* Slider container fix */
+.brand-slider, .ticker-wrapper {
+  overflow: hidden !important;
+  width: 100% !important;
+  display: flex !important;
+}
+
+/* Words ko tutne se rokne ke liye */
+.brand-item, .ticker-item {
+  white-space: nowrap !important; /* Words tootenge nahi */
+  flex-shrink: 0 !important;
+  padding: 0 15px !important;
+}
+
+/* Smooth Infinite Animation */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.slider-track {
+  display: flex !important;
+  animation: slide 15s linear infinite !important; /* Continuous smooth loop */
+}
+/* ==========================================================
+   SIRF YEH CHOTA FIX APNE CSS KE END MEIN COPY PASTE KAREIN
+   ========================================================== */
+
+@media screen and (max-width: 768px) {
+  /* 1. Hero section ki extra spacing khatam karke picture upar karne ke liye */
+  .hero {
+    padding-top: 70px !important;
+    padding-bottom: 10px !important;
+    gap: 10px !important;
+  }
+
+  .hero-image {
+    margin: 5px auto !important;
+  }
+
+  /* 2. Marquee / Brand Slider ko continuous aur smooth chalane ke liye */
+  .marquee-container {
+    overflow: hidden !important;
+    width: 100% !important;
+    white-space: nowrap !important;
+  }
+
+  .marquee-track {
+    display: inline-flex !important;
+    gap: 30px !important;
+    animation: continuousScroll 12s linear infinite !important;
+  }
+
+  .marquee-track span {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+@keyframes continuousScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
